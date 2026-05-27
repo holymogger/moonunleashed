@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Moon Unleashed — MMORPG/RPG Souls-like com 12 classes, 8 raças, armas lendárias, armaduras e dungeons épicas. Baixe agora e explore um mundo de pixel art." />
+  <meta name="keywords" content="Moon Unleashed, MMORPG, RPG, Souls-like, pixel art, indie game, dungeons, classes, raças" />
+  <meta name="author" content="Moon Unleashed Team" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Moon Unleashed — MMORPG / RPG / Souls-like" />
+  <meta property="og:description" content="Explore dungeons sombrias, enfrente chefes implacáveis e desvende segredos em um mundo que mistura aconchego de fazenda, exploração sandbox e combate brutal." />
+  <meta property="og:image" content="assets/showcase-portal-run.png" />
+  <meta property="og:type" content="website" />
+
+  <title>Moon Unleashed — MMORPG / RPG / Souls-like</title>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-moon">☽</div>
+      <div class="preloader-bar"><div class="preloader-fill"></div></div>
+      <p class="preloader-text">Carregando...</p>
+    </div>
+  </div>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Ir para conteúdo principal</a>
+
+  <!-- Background layers -->
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Cursor glow -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <a href="#top" class="logo" aria-label="Moon Unleashed — início">
+      <span class="logo-icon">☽</span>
+      <span class="logo-text">Moon<span class="logo-accent">Unleashed</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+    <nav class="site-nav" id="siteNav" role="navigation" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#classes">Classes</a>
+      <a href="#racas">Raças</a>
+      <a href="#arsenal">Arsenal</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#download" class="nav-cta">
+        <span class="nav-cta-icon">⬇</span>
+        Download
+      </a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <img
+          src="assets/hero-main-hd.jpg"
+          srcset="assets/hero-main-hd.jpg 1920w, assets/hero-main.png 1024w"
+          sizes="100vw"
+          alt="Cenário épico de Moon Unleashed"
+          class="hero-bg-img"
+          width="1920" height="1080"
+          fetchpriority="high"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-vignette"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge" data-reveal>
+          <span class="badge-dot"></span>
+          MMORPG · RPG · Souls-like
+        </div>
+        <h1 class="hero-title" data-reveal>
+          <span class="title-line">Moon</span>
+          <span class="title-line title-accent">Unleashed</span>
+        </h1>
+        <p class="hero-desc" data-reveal>
+          Explore dungeons sombrias, enfrente chefes implacáveis e desvende segredos
+          em um mundo que mistura aconchego de fazenda, exploração sandbox e combate
+          brutal — inspirado em Stardew Valley, Terraria, Dead Cells e Hollow Knight.
+        </p>
+        <div class="hero-actions" data-reveal>
+          <button type="button" class="btn btn-primary btn-glow" id="heroDownload">
+            <span class="btn-shine"></span>
+            ⬇ Baixar agora
+          </button>
+          <a href="#sobre" class="btn btn-ghost">Conhecer o jogo →</a>
+        </div>
+        <div class="hero-stats" data-reveal>
+          <div class="stat-card">
+            <span class="stat-value" data-count="12">0</span>
+            <span class="stat-label">Classes</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" data-count="8">0</span>
+            <span class="stat-label">Raças</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" data-count="200">0</span>
+            <span class="stat-label">Itens+</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span class="scroll-arrow"></span>
+      </div>
+    </section>
+
+    <!-- ═══ TICKER ═══ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>⚔ Combate Souls-like</span>
+        <span>☽ Dungeons em grupo</span>
+        <span>🛡 Armaduras lendárias</span>
+        <span>✦ 8 raças jogáveis</span>
+        <span>🗡 Armas elementais</span>
+        <span>⛏ Craft &amp; economia</span>
+        <span>⚔ Combate Souls-like</span>
+        <span>☽ Dungeons em grupo</span>
+        <span>🛡 Armaduras lendárias</span>
+        <span>✦ 8 raças jogáveis</span>
+        <span>🗡 Armas elementais</span>
+        <span>⛏ Craft &amp; economia</span>
+      </div>
+    </div>
+
+    <!-- ═══ SOBRE ═══ -->
+    <section class="section sobre" id="sobre">
+      <div class="container">
+        <header class="section-header" data-reveal>
+          <span class="section-tag">// sobre</span>
+          <h2 class="section-title">O que é <span class="text-gradient">Moon Unleashed</span>?</h2>
+        </header>
+        <div class="sobre-grid">
+          <div class="sobre-text" data-reveal>
+            <p>
+              <strong>Moon Unleashed</strong> é um RPG de ação com visão top-down e estética
+              pixel art de alta fidelidade. Você atravessa portais mágicos, explora masmorras
+              em tons de azul e verde, coleta recursos, fortalece seu personagem e enfrenta
+              inimigos em combates exigentes — no estilo souls-like, mas com a liberdade e
+              o charme dos grandes indies de exploração.
+            </p>
+            <p>
+              Construa, negocie, mergulhe em calabouços procedurais e jogue com amigos em um
+              mundo persistente. Cada run pode ser diferente; cada chefe, uma prova de fogo.
+            </p>
+            <div class="inspirations-block">
+              <h3 class="inspirations-title">Inspirações / Referenciados</h3>
+              <ul class="inspirations" aria-label="Jogos referenciados">
+                <li><span class="insp-icon">🌾</span> Stardew Valley</li>
+                <li><span class="insp-icon">⛏</span> Terraria</li>
+                <li><span class="insp-icon">💀</span> Dead Cells</li>
+                <li><span class="insp-icon">🦋</span> Hollow Knight</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="sobre-visual" data-reveal data-tilt>
+            <div class="img-frame">
+              <img src="assets/showcase-portal-run.png" alt="Aventureiro atravessando portal de energia verde" loading="lazy" width="914" height="1024" />
+              <div class="img-glow"></div>
+            </div>
+            <figcaption>Portais entre mundos — cada run, uma nova aventura.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CLASSES ═══ -->
+    <section class="section classes" id="classes">
+      <div class="container">
+        <header class="section-header section-header--center" data-reveal>
+          <span class="section-tag">// classes</span>
+          <h2 class="section-title">Escolha seu <span class="text-gradient">caminho</span></h2>
+          <p class="section-desc">Cada classe muda seu estilo de combate, habilidades e papel no grupo — de tank a suporte, de mago a mercador.</p>
+        </header>
+
+        <div class="class-tabs" role="tablist" data-reveal>
+          <button type="button" class="class-tab is-active" data-class="guerreiro" role="tab" aria-selected="true">
+            <span class="tab-icon">⚔</span> Guerreiro
+          </button>
+          <button type="button" class="class-tab" data-class="mago" role="tab" aria-selected="false">
+            <span class="tab-icon">✨</span> Mago
+          </button>
+          <button type="button" class="class-tab" data-class="arqueiro" role="tab" aria-selected="false">
+            <span class="tab-icon">🏹</span> Arqueiro
+          </button>
+          <button type="button" class="class-tab" data-class="ladino" role="tab" aria-selected="false">
+            <span class="tab-icon">🗡</span> Ladino
+          </button>
+          <button type="button" class="class-tab" data-class="mercador" role="tab" aria-selected="false">
+            <span class="tab-icon">💰</span> Mercador
+          </button>
+          <button type="button" class="class-tab" data-class="clerigo" role="tab" aria-selected="false">
+            <span class="tab-icon">✝</span> Clérigo
+          </button>
+        </div>
+
+        <div class="class-panels">
+          <article class="class-panel is-active" data-panel="guerreiro" role="tabpanel">
+            <div class="class-panel-text">
+              <h3>Guerreiro</h3>
+              <p class="class-role">Tank · Dano corpo a corpo</p>
+              <p>Espadas grandes, escudos pesados e resistência alta. Ideal para quem quer ficar na linha de frente contra chefes.</p>
+              <ul class="class-perks">
+                <li>+Vida e defesa física</li>
+                <li>Parry e investida</li>
+                <li>Provoca inimigos (aggro)</li>
+              </ul>
+              <div class="rpg-bars">
+                <div class="rpg-bar"><span>ATK</span><div class="bar-track"><div class="bar-fill" style="--w: 85%"></div></div></div>
+                <div class="rpg-bar"><span>DEF</span><div class="bar-track"><div class="bar-fill bar-fill--green" style="--w: 95%"></div></div></div>
+                <div class="rpg-bar"><span>VEL</span><div class="bar-track"><div class="bar-fill bar-fill--gold" style="--w: 40%"></div></div></div>
+              </div>
+            </div>
+            <figure class="class-panel-img">
+              <img src="assets/showcase-dungeon.png" alt="Guerreiro em combate com espada elemental" loading="lazy" />
+              <div class="img-shine"></div>
+            </figure>
+          </article>
+
+          <article class="class-panel" data-panel="mago" role="tabpanel">
+            <div class="class-panel-text">
+              <h3>Mago</h3>
+              <p class="class-role">DPS · Elemental</p>
+              <p>Canaliza fogo, gelo e energia lunar. Dano em área e controle de multidões nas dungeons mais densas.</p>
+              <ul class="class-perks">
+                <li>Feitiços de área</li>
+                <li>Debuffs e slow</li>
+                <li>Combinações elementais</li>
+              </ul>
+              <div class="rpg-bars">
+                <div class="rpg-bar"><span>ATK</span><div class="bar-track"><div class="bar-fill" style="--w: 90%"></div></div></div>
+                <div class="rpg-bar"><span>DEF</span><div class="bar-track"><div class="bar-fill bar-fill--green" style="--w: 35%"></div></div></div>
+                <div class="rpg-bar"><span>MANA</span><div class="bar-track"><div class="bar-fill bar-fill--cyan" style="--w: 100%"></div></div></div>
+              </div>
+            </div>
+            <figure class="class-panel-img">
+              <img src="assets/showcase-boss-senda.png" alt="Mago enfrentando chefe com energia arcana" loading="lazy" />
+              <div class="img-shine"></div>
+            </figure>
+          </article>
+
+          <article class="class-panel" data-panel="arqueiro" role="tabpanel">
+            <div class="class-panel-text">
+              <h3>Arqueiro</h3>
+              <p class="class-role">DPS · Alcance</p>
+              <p>Ataques à distância, armadilhas e mobilidade. Perfeito para kitar chefes e limpar salas antes do melee entrar.</p>
+              <ul class="class-perks">
+                <li>Flechas especiais</li>
+                <li>Armadilhas no chão</li>
+                <li>Crítico aumentado</li>
+              </ul>
+              <div class="rpg-bars">
+                <div class="rpg-bar"><span>ATK</span><div class="bar-track"><div class="bar-fill" style="--w: 80%"></div></div></div>
+                <div class="rpg-bar"><span>DEF</span><div class="bar-track"><div class="bar-fill bar-fill--green" style="--w: 50%"></div></div></div>
+                <div class="rpg-bar"><span>VEL</span><div class="bar-track"><div class="bar-fill bar-fill--gold" style="--w: 85%"></div></div></div>
+              </div>
+            </div>
+            <figure class="class-panel-img">
+              <img src="assets/showcase-boss-slime.png" alt="Arqueiro em masmorra verde" loading="lazy" />
+              <div class="img-shine"></div>
+            </figure>
+          </article>
+
+          <article class="class-panel" data-panel="ladino" role="tabpanel">
+            <div class="class-panel-text">
+              <h3>Ladino</h3>
+              <p class="class-role">DPS · Furtivo</p>
+              <p>Críticos explosivos, venenos e esquiva dupla. Recompensa quem estuda padrões de ataque e acerta o timing.</p>
+              <ul class="class-perks">
+                <li>Backstab e crítico</li>
+                <li>Veneno e sangramento</li>
+                <li>Invisibilidade curta</li>
+              </ul>
+              <div class="rpg-bars">
+                <div class="rpg-bar"><span>ATK</span><div class="bar-track"><div class="bar-fill" style="--w: 88%"></div></div></div>
+                <div class="rpg-bar"><span>DEF</span><div class="bar-track"><div class="bar-fill bar-fill--green" style="--w: 45%"></div></div></div>
+                <div class="rpg-bar"><span>VEL</span><div class="bar-track"><div class="bar-fill bar-fill--gold" style="--w: 95%"></div></div></div>
+              </div>
+            </div>
+            <figure class="class-panel-img">
+              <img src="assets/showcase-portal-run.png" alt="Ladino atravessando portal com loot" loading="lazy" />
+              <div class="img-shine"></div>
+            </figure>
+          </article>
+
+          <article class="class-panel" data-panel="mercador" role="tabpanel">
+            <div class="class-panel-text">
+              <h3>Mercador</h3>
+              <p class="class-role">Suporte · Economia</p>
+              <p>Inventário expandido, negociação com NPCs e bônus de ouro. Combina aventura com loja e craft avançado.</p>
+              <ul class="class-perks">
+                <li>+Slots de mochila</li>
+                <li>Preços melhores</li>
+                <li>Buffs para o grupo</li>
+              </ul>
+              <div class="rpg-bars">
+                <div class="rpg-bar"><span>OURO</span><div class="bar-track"><div class="bar-fill bar-fill--gold" style="--w: 100%"></div></div></div>
+                <div class="rpg-bar"><span>ATK</span><div class="bar-track"><div class="bar-fill" style="--w: 55%"></div></div></div>
+                <div class="rpg-bar"><span>SUP</span><div class="bar-track"><div class="bar-fill bar-fill--cyan" style="--w: 80%"></div></div></div>
+              </div>
+            </div>
+            <figure class="class-panel-img">
+              <img src="assets/showcase-village.png" alt="Mercador na vila com moedas e NPCs" loading="lazy" />
+              <div class="img-shine"></div>
+            </figure>
+          </article>
+
+          <article class="class-panel" data-panel="clerigo" role="tabpanel">
+            <div class="class-panel-text">
+              <h3>Clérigo</h3>
+              <p class="class-role">Suporte · Cura</p>
+              <p>Cura aliados, escudos sagrados e revives em masmorra. Essencial em raids e chefes longos estilo souls.</p>
+              <ul class="class-perks">
+                <li>Cura e escudo</li>
+                <li>Revive em combate</li>
+                <li>Dano sagrado vs. mortos-vivos</li>
+              </ul>
+              <div class="rpg-bars">
+                <div class="rpg-bar"><span>CURA</span><div class="bar-track"><div class="bar-fill bar-fill--cyan" style="--w: 100%"></div></div></div>
+                <div class="rpg-bar"><span>DEF</span><div class="bar-track"><div class="bar-fill bar-fill--green" style="--w: 70%"></div></div></div>
+                <div class="rpg-bar"><span>ATK</span><div class="bar-track"><div class="bar-fill" style="--w: 50%"></div></div></div>
+              </div>
+            </div>
+            <figure class="class-panel-img">
+              <img src="assets/showcase-arena.png" alt="Clérigo em arena com altar mágico" loading="lazy" />
+              <div class="img-shine"></div>
+            </figure>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ RAÇAS ═══ -->
+    <section class="section racas" id="racas">
+      <div class="container">
+        <header class="section-header section-header--center" data-reveal>
+          <span class="section-tag">// raças</span>
+          <h2 class="section-title">Oito povos sob a <span class="text-gradient">lua</span></h2>
+          <p class="section-desc">Cada raça traz bônus passivos, diálogos únicos e aparência customizável — misture com qualquer classe.</p>
+        </header>
+
+        <div class="race-grid">
+          <article class="race-card" data-reveal data-tilt>
+            <div class="race-card-inner">
+              <span class="race-icon">👤</span>
+              <h3>Humano</h3>
+              <p>Equilíbrio em todos os atributos. +5% XP — a escolha clássica do aventureiro.</p>
+              <div class="race-card-glow"></div>
+            </div>
+          </article>
+          <article class="race-card" data-reveal data-tilt>
+            <div class="race-card-inner">
+              <span class="race-icon">🧝</span>
+              <h3>Elfo da Lua</h3>
+              <p>+Mana e resistência mágica. Visão noturna em dungeons escuras.</p>
+              <div class="race-card-glow"></div>
+            </div>
+          </article>
+          <article class="race-card" data-reveal data-tilt>
+            <div class="race-card-inner">
+              <span class="race-icon">⛏</span>
+              <h3>Anão das Profundezas</h3>
+              <p>+Defesa e mineração. Imune a lentidão em terreno rochoso.</p>
+              <div class="race-card-glow"></div>
+            </div>
+          </article>
+          <article class="race-card" data-reveal data-tilt>
+            <div class="race-card-inner">
+              <span class="race-icon">🌿</span>
+              <h3>Folk Verde</h3>
+              <p>+Regeneração fora de combate. Bônus com poções e ervas.</p>
+              <div class="race-card-glow"></div>
+            </div>
+          </article>
+          <article class="race-card" data-reveal data-tilt>
+            <div class="race-card-inner">
+              <span class="race-icon">🔥</span>
+              <h3>Filho do Vulcão</h3>
+              <p>+Dano de fogo. Resistência a queimadura e lava.</p>
+              <div class="race-card-glow"></div>
+            </div>
+          </article>
+          <article class="race-card" data-reveal data-tilt>
+            <div class="race-card-inner">
+              <span class="race-icon">👁</span>
+              <h3>Vidente Etéreo</h3>
+              <p>Detecta baús secretos. Chance de esquiva automática.</p>
+              <div class="race-card-glow"></div>
+            </div>
+          </article>
+          <article class="race-card" data-reveal data-tilt>
+            <div class="race-card-inner">
+              <span class="race-icon">🦴</span>
+              <h3>Revenant</h3>
+              <p>Uma vida extra por run. -Vida máxima, +dano sombrio.</p>
+              <div class="race-card-glow"></div>
+            </div>
+          </article>
+          <article class="race-card race-card--featured" data-reveal data-tilt>
+            <div class="race-card-inner">
+              <span class="race-icon">☽</span>
+              <h3>Lunari</h3>
+              <p>Raça exclusiva: poder cresce com a fase da lua no servidor. Desbloqueável no endgame.</p>
+              <span class="featured-badge">Exclusiva</span>
+              <div class="race-card-glow"></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ARSENAL ═══ -->
+    <section class="section arsenal" id="arsenal">
+      <div class="container">
+        <header class="section-header" data-reveal>
+          <span class="section-tag">// arsenal</span>
+          <h2 class="section-title">Armas &amp; <span class="text-gradient">armaduras</span></h2>
+          <p class="section-desc">Loot raro, sets completos e encantamentos elementais — do ferro enferrujado à armadura dourada dos chefes.</p>
+        </header>
+
+        <div class="arsenal-tabs" role="tablist" data-reveal>
+          <button type="button" class="arsenal-tab is-active" data-arsenal="armas" role="tab">⚔ Armas</button>
+          <button type="button" class="arsenal-tab" data-arsenal="armaduras" role="tab">🛡 Armaduras</button>
+          <button type="button" class="arsenal-tab" data-arsenal="acessorios" role="tab">💍 Acessórios</button>
+        </div>
+
+        <div class="arsenal-panels">
+          <div class="arsenal-panel is-active" data-arsenal-panel="armas">
+            <div class="item-grid">
+              <article class="item-card item-card--legendary" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Lendária</span>
+                <h4>Espada da Névoa Lunar</h4>
+                <p>Greatsword · Dano físico + gelo. Rastro roxo em cada golpe.</p>
+                <span class="item-stat">ATK 946</span>
+              </article>
+              <article class="item-card item-card--epic" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Épica</span>
+                <h4>Lâmina do Portal</h4>
+                <p>Espada curta · Brilho ciano. +Velocidade ao sair de dungeons.</p>
+                <span class="item-stat">ATK 420</span>
+              </article>
+              <article class="item-card item-card--rare" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Rara</span>
+                <h4>Arco Musgo Profundo</h4>
+                <p>Arco · Veneno em críticos. Eficaz vs. slimes e plantas.</p>
+                <span class="item-stat">ATK 280</span>
+              </article>
+              <article class="item-card item-card--rare" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Rara</span>
+                <h4>Cajado do Abismo Verde</h4>
+                <p>Cajado · Projéteis em espiral. Sinergia com classe Mago.</p>
+                <span class="item-stat">MAG 310</span>
+              </article>
+              <article class="item-card item-card--uncommon" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Incomum</span>
+                <h4>Machado do Comerciante</h4>
+                <p>Machado · +Ouro por kill. Favorito dos Mercadores.</p>
+                <span class="item-stat">ATK 150</span>
+              </article>
+              <article class="item-card" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Comum</span>
+                <h4>Espada de Ferro</h4>
+                <p>Espada · Sua primeira lâmina. Confiável e honesta.</p>
+                <span class="item-stat">ATK 45</span>
+              </article>
+            </div>
+          </div>
+
+          <div class="arsenal-panel" data-arsenal-panel="armaduras">
+            <div class="item-grid">
+              <article class="item-card item-card--legendary" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Set Lendário</span>
+                <h4>Armadura do Rei Golem</h4>
+                <p>Peitoral pesado · DEF máxima. Brilho vermelho nos detalhes.</p>
+                <span class="item-stat">DEF 880</span>
+              </article>
+              <article class="item-card item-card--epic" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Épica</span>
+                <h4>Capa do Explorador</h4>
+                <p>Capa · Mochila visual maior. +5 slots de inventário.</p>
+                <span class="item-stat">DEF 120</span>
+              </article>
+              <article class="item-card item-card--epic" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Épica</span>
+                <h4>Placas Douradas de Senda</h4>
+                <p>Set de chefe · Resistência arcana. Efeito de anéis orbitais.</p>
+                <span class="item-stat">DEF 650</span>
+              </article>
+              <article class="item-card item-card--rare" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Rara</span>
+                <h4>Couro da Selva Profunda</h4>
+                <p>Leve · +Esquiva. Ideal para Ladino e Arqueiro.</p>
+                <span class="item-stat">DEF 200</span>
+              </article>
+              <article class="item-card item-card--uncommon" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Incomum</span>
+                <h4>Túnica do Mercador</h4>
+                <p>Túnica verde · +Preço de venda em NPCs.</p>
+                <span class="item-stat">DEF 80</span>
+              </article>
+              <article class="item-card" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Comum</span>
+                <h4>Botas de Aventureiro</h4>
+                <p>Botas · +Velocidade de movimento básica.</p>
+                <span class="item-stat">DEF 25</span>
+              </article>
+            </div>
+          </div>
+
+          <div class="arsenal-panel" data-arsenal-panel="acessorios">
+            <div class="item-grid">
+              <article class="item-card item-card--legendary" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Lendário</span>
+                <h4>Anel da Lua Cheia</h4>
+                <p>+Todos os atributos à noite no servidor.</p>
+                <span class="item-stat">ALL +12%</span>
+              </article>
+              <article class="item-card item-card--epic" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Épica</span>
+                <h4>Amuleto do Portal</h4>
+                <p>Teleporte de curta distância. Cooldown 30s.</p>
+                <span class="item-stat">CD 30s</span>
+              </article>
+              <article class="item-card item-card--rare" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Rara</span>
+                <h4>Cinto do Colecionador</h4>
+                <p>+Poções equipadas. Autouse em HP crítico.</p>
+                <span class="item-stat">HP auto</span>
+              </article>
+              <article class="item-card item-card--rare" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Rara</span>
+                <h4>Bracelete de Ouro</h4>
+                <p>+Moedas dropadas. Brilho dourado no HUD.</p>
+                <span class="item-stat">GOLD +25%</span>
+              </article>
+              <article class="item-card item-card--uncommon" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Incomum</span>
+                <h4>Orelha do Slime Rei</h4>
+                <p>Troféu · Resistência a veneno e ácido.</p>
+                <span class="item-stat">RES +40%</span>
+              </article>
+              <article class="item-card" data-reveal data-tilt>
+                <div class="item-card-border"></div>
+                <span class="item-tier">Comum</span>
+                <h4>Mapa da Masmorra</h4>
+                <p>Revela salas adjacentes no minimapa.</p>
+                <span class="item-stat">MAP +1</span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROGRESSÃO ═══ -->
+    <section class="section progressao" id="progressao">
+      <div class="container">
+        <div class="progressao-inner">
+          <div class="progressao-text" data-reveal>
+            <span class="section-tag">// progressão</span>
+            <h2 class="section-title">Suba de nível. <span class="text-gradient">Domine a lua.</span></h2>
+            <p>Sistema de XP, atributos distribuíveis, árvore de talentos por classe e drops com raridade colorida — do comum ao lendário.</p>
+            <div class="loot-tiers">
+              <span class="tier tier--common">Comum</span>
+              <span class="tier tier--uncommon">Incomum</span>
+              <span class="tier tier--rare">Rara</span>
+              <span class="tier tier--epic">Épica</span>
+              <span class="tier tier--legendary">Lendária</span>
+            </div>
+            <div class="hud-preview">
+              <div class="hud-bar hud-bar--hp"><span>HP</span><div class="hud-track"><div class="hud-fill" style="--w: 88%"></div></div><em>220/250</em></div>
+              <div class="hud-bar hud-bar--mp"><span>MP</span><div class="hud-track"><div class="hud-fill hud-fill--mp" style="--w: 100%"></div></div><em>100/100</em></div>
+              <div class="hud-bar hud-bar--xp"><span>XP</span><div class="hud-track"><div class="hud-fill hud-fill--xp" style="--w: 67%"></div></div><em>Lv.42</em></div>
+              <div class="hud-gold">🪙 <span data-count="1244">0</span></div>
+            </div>
+          </div>
+          <figure class="progressao-img" data-reveal>
+            <img src="assets/showcase-village.png" alt="HUD de vida, mana e ouro na vila" loading="lazy" />
+            <div class="img-shine"></div>
+            <div class="img-frame-border"></div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FEATURES ═══ -->
+    <section class="section features-section" id="mundo">
+      <div class="container">
+        <header class="section-header section-header--center" data-reveal>
+          <span class="section-tag">// mundo</span>
+          <h2 class="section-title">Recursos do <span class="text-gradient">jogo</span></h2>
+        </header>
+        <div class="features-grid">
+          <article class="feature-card" data-reveal data-tilt>
+            <div class="feature-icon-wrapper"><div class="feature-icon">⚔</div></div>
+            <h3>Combate Souls-like</h3>
+            <p>Esquive, contra-ataque e aprenda padrões de chefes. Morte é professor — vitória, recompensa.</p>
+          </article>
+          <article class="feature-card" data-reveal data-tilt>
+            <div class="feature-icon-wrapper"><div class="feature-icon">🌙</div></div>
+            <h3>Exploração &amp; MMORPG</h3>
+            <p>Mundo compartilhado, dungeons em grupo e progressão que respeita seu ritmo de aventura.</p>
+          </article>
+          <article class="feature-card" data-reveal data-tilt>
+            <div class="feature-icon-wrapper"><div class="feature-icon">⛏</div></div>
+            <h3>Coleta &amp; construção</h3>
+            <p>Recursos, crafting e base no espírito de sandbox — plante, cave, construa.</p>
+          </article>
+          <article class="feature-card" data-reveal data-tilt>
+            <div class="feature-icon-wrapper"><div class="feature-icon">✦</div></div>
+            <h3>Portais &amp; dungeons</h3>
+            <p>Calabouços em teal e névoa, inimigos bioluminescentes e loot que vale o risco.</p>
+          </article>
+          <article class="feature-card" data-reveal data-tilt>
+            <div class="feature-icon-wrapper"><div class="feature-icon">🛡</div></div>
+            <h3>Sets &amp; craft</h3>
+            <p>Combine peças de armadura para bônus de set. Forje armas na sua base.</p>
+          </article>
+          <article class="feature-card" data-reveal data-tilt>
+            <div class="feature-icon-wrapper"><div class="feature-icon">👥</div></div>
+            <h3>Raids &amp; PvE</h3>
+            <p>Até 4 jogadores por masmorra. Chefes com barra de vida e fases mecânicas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ GALERIA ═══ -->
+    <section class="section galeria" id="galeria">
+      <div class="container">
+        <header class="section-header" data-reveal>
+          <span class="section-tag">// galeria</span>
+          <h2 class="section-title">Primeiras <span class="text-gradient">imagens</span></h2>
+        </header>
+        <div class="gallery">
+          <figure class="gallery-item gallery-item--wide" data-reveal>
+            <button type="button" class="gallery-zoom" aria-label="Ampliar: batalha contra chefe">
+              <img src="assets/screenshot-boss.png" alt="Batalha contra chefe em masmorra escura" loading="lazy" />
+              <div class="gallery-overlay"><span class="zoom-icon">⤢</span></div>
+            </button>
+            <figcaption>Chefes que testam cada movimento.</figcaption>
+          </figure>
+          <figure class="gallery-item" data-reveal>
+            <button type="button" class="gallery-zoom" aria-label="Ampliar: combate elemental">
+              <img src="assets/showcase-dungeon.png" alt="Combate com espada elemental e loot" loading="lazy" />
+              <div class="gallery-overlay"><span class="zoom-icon">⤢</span></div>
+            </button>
+            <figcaption>Dano crítico e tesouros no chão.</figcaption>
+          </figure>
+          <figure class="gallery-item" data-reveal>
+            <button type="button" class="gallery-zoom" aria-label="Ampliar: chefe slime">
+              <img src="assets/showcase-boss-slime.png" alt="Chefe slime verde em masmorra" loading="lazy" />
+              <div class="gallery-overlay"><span class="zoom-icon">⤢</span></div>
+            </button>
+            <figcaption>Inimigos bioluminescentes.</figcaption>
+          </figure>
+          <figure class="gallery-item" data-reveal>
+            <button type="button" class="gallery-zoom" aria-label="Ampliar: ponte e névoa">
+              <img src="assets/showcase-bridge.png" alt="Ponte sobre abismo com névoa teal" loading="lazy" />
+              <div class="gallery-overlay"><span class="zoom-icon">⤢</span></div>
+            </button>
+            <figcaption>Mundo aberto entre penhascos.</figcaption>
+          </figure>
+          <figure class="gallery-item" data-reveal>
+            <button type="button" class="gallery-zoom" aria-label="Ampliar: vila">
+              <img src="assets/showcase-village.png" alt="Vila ensolarada e economia" loading="lazy" />
+              <div class="gallery-overlay"><span class="zoom-icon">⤢</span></div>
+            </button>
+            <figcaption>Vilas, NPCs e comércio.</figcaption>
+          </figure>
+          <figure class="gallery-item gallery-item--tall" data-reveal>
+            <button type="button" class="gallery-zoom" aria-label="Ampliar: portal">
+              <img src="assets/hero-adventure.png" alt="Aventureiro diante de portal de energia verde" loading="lazy" />
+              <div class="gallery-overlay"><span class="zoom-icon">⤢</span></div>
+            </button>
+            <figcaption>A porta para a lua desencadeada.</figcaption>
+          </figure>
+          <figure class="gallery-item" data-reveal>
+            <button type="button" class="gallery-zoom" aria-label="Ampliar: arena">
+              <img src="assets/showcase-arena.png" alt="Arena flutuante com altar verde" loading="lazy" />
+              <div class="gallery-overlay"><span class="zoom-icon">⤢</span></div>
+            </button>
+            <figcaption>Arenas e altares antigos.</figcaption>
+          </figure>
+          <figure class="gallery-item gallery-item--wide" data-reveal>
+            <button type="button" class="gallery-zoom" aria-label="Ampliar: chefe Senda">
+              <img src="assets/showcase-boss-senda.png" alt="Chefe Senda com armadura dourada" loading="lazy" />
+              <div class="gallery-overlay"><span class="zoom-icon">⤢</span></div>
+            </button>
+            <figcaption>Chefes lendários como Senda.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ DOWNLOAD ═══ -->
+    <section class="section download" id="download">
+      <div class="container">
+        <div class="download-box">
+          <div class="download-glow" aria-hidden="true"></div>
+          <div class="download-particles" aria-hidden="true"></div>
+          <header class="section-header section-header--center">
+            <span class="section-tag">// instalar</span>
+            <h2 class="section-title">Pronto para entrar na <span class="text-gradient">dungeon</span>?</h2>
+            <p class="download-sub">Escolha sua plataforma e comece a jogar Moon Unleashed.</p>
+          </header>
+          <div class="download-platforms" id="downloadPlatforms">
+            <!-- preenchido via JS -->
+          </div>
+          <p class="download-note" id="downloadNote"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-logo">☽ Moon<span class="logo-accent">Unleashed</span></span>
+          <p class="footer-tagline">Explore. Lute. Conquiste a lua.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Navegação do rodapé">
+          <div class="footer-col">
+            <h4>Jogo</h4>
+            <a href="#sobre">Sobre</a>
+            <a href="#classes">Classes</a>
+            <a href="#racas">Raças</a>
+          </div>
+          <div class="footer-col">
+            <h4>Mais</h4>
+            <a href="#arsenal">Arsenal</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#download">Download</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Moon Unleashed. Todos os direitos reservados.</p>
+        <p class="footer-credit">Feito com ☽ para aventureiros.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar imagem" aria-hidden="true">
+    <div class="lightbox-backdrop"></div>
+    <button type="button" class="lightbox-close" data-lightbox-close aria-label="Fechar">×</button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Imagem anterior">‹</button>
+    <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Próxima imagem">›</button>
+    <div class="lightbox-content">
+      <img src="" alt="" class="lightbox-img" id="lightboxImg" />
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+      <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
