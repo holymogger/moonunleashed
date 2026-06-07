@@ -112,13 +112,17 @@ function initReveal() {
         entry.target.classList.add('is-visible');
 
         // Handle counters if present
-        const counter = entry.target.querySelector('[data-count]') ||
-          (entry.target.hasAttribute('data-count') ? entry.target : null);
-
-        if (counter && !counter.dataset.animated) {
-          animateCount(counter);
-          counter.dataset.animated = 'true';
+        const counters = $$('[data-count]', entry.target);
+        if (entry.target.hasAttribute('data-count')) {
+          counters.push(entry.target);
         }
+
+        counters.forEach(counter => {
+          if (!counter.dataset.animated) {
+            animateCount(counter);
+            counter.dataset.animated = 'true';
+          }
+        });
 
         revealObserver.unobserve(entry.target);
       }
@@ -140,11 +144,16 @@ function triggerReveal() {
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
       el.classList.add('is-visible');
-      const counter = el.querySelector('[data-count]');
-      if (counter && !counter.dataset.animated) {
-        animateCount(counter);
-        counter.dataset.animated = 'true';
+      const counters = $$('[data-count]', el);
+      if (el.hasAttribute('data-count')) {
+        counters.push(el);
       }
+      counters.forEach(counter => {
+        if (!counter.dataset.animated) {
+          animateCount(counter);
+          counter.dataset.animated = 'true';
+        }
+      });
       revealObserver.unobserve(el);
     }
   });
